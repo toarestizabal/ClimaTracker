@@ -24,7 +24,7 @@ export class HomePage {
           this.weatherData = data;
           console.log('Datos del clima:', data);
           
-          // Guardar en historial de búsquedas
+          
           this.databaseService.insertSearchHistory(this.city).then(() => {
             console.log('Búsqueda guardada en historial');
           }).catch(error => {

@@ -8,7 +8,7 @@
 
 /** Ionic CSS Variables **/
 :root {
-  /** primary **/
+  
   --ion-color-primary: #2196F3;
   --ion-color-primary-rgb: 33, 150, 243;
   --ion-color-primary-contrast: #ffffff;
@@ -16,7 +16,7 @@
   --ion-color-primary-shade: #1e88e5;
   --ion-color-primary-tint: #42A5F5;
 
-  /** secondary **/
+ 
   --ion-color-secondary: #4FC3F7;
   --ion-color-secondary-rgb: 79, 195, 247;
   --ion-color-secondary-contrast: #000000;
@@ -24,7 +24,7 @@
   --ion-color-secondary-shade: #46b0de;
   --ion-color-secondary-tint: #81D4FA;
 
-  /** tertiary **/
+  
   --ion-color-tertiary: #81D4FA;
   --ion-color-tertiary-rgb: 129, 212, 250;
   --ion-color-tertiary-contrast: #000000;
@@ -32,7 +32,7 @@
   --ion-color-tertiary-shade: #72bbdc;
   --ion-color-tertiary-tint: #8ed8fb;
 
-  /** success **/
+  
   --ion-color-success: #2dd36f;
   --ion-color-success-rgb: 45, 211, 111;
   --ion-color-success-contrast: #ffffff;
@@ -40,7 +40,7 @@
   --ion-color-success-shade: #28ba62;
   --ion-color-success-tint: #42d77d;
 
-  /** warning **/
+  
   --ion-color-warning: #ffc409;
   --ion-color-warning-rgb: 255, 196, 9;
   --ion-color-warning-contrast: #000000;
@@ -48,7 +48,7 @@
   --ion-color-warning-shade: #e0ac08;
   --ion-color-warning-tint: #ffca22;
 
-  /** danger **/
+  
   --ion-color-danger: #eb445a;
   --ion-color-danger-rgb: 235, 68, 90;
   --ion-color-danger-contrast: #ffffff;
@@ -56,7 +56,7 @@
   --ion-color-danger-shade: #cf3c4f;
   --ion-color-danger-tint: #ed576b;
 
-  /** dark **/
+  
   --ion-color-dark: #222428;
   --ion-color-dark-rgb: 34, 36, 40;
   --ion-color-dark-contrast: #ffffff;
@@ -64,7 +64,7 @@
   --ion-color-dark-shade: #1e2023;
   --ion-color-dark-tint: #383a3e;
 
-  /** medium **/
+  
   --ion-color-medium: #92949c;
   --ion-color-medium-rgb: 146, 148, 156;
   --ion-color-medium-contrast: #ffffff;
@@ -72,7 +72,7 @@
   --ion-color-medium-shade: #808289;
   --ion-color-medium-tint: #9d9fa6;
 
-  /** light **/
+ 
   --ion-color-light: #E1F5FE;
   --ion-color-light-rgb: 225, 245, 254;
   --ion-color-light-contrast: #000000;
@@ -80,19 +80,19 @@
   --ion-color-light-shade: #c6d8e1;
   --ion-color-light-tint: #e4f6fe;
 
-  /** Background **/
+  
   --ion-background-color: #E1F5FE;
   --ion-background-color-rgb: 225, 245, 254;
 
-  /** Text **/
+
   --ion-text-color: #0277BD;
   --ion-text-color-rgb: 2, 119, 189;
 
-  /** Card **/
+ 
   --ion-card-background: #ffffff;
 }
 
-/* Aplicar tema Android Material Design */
+
 .md {
   --ion-toolbar-background: var(--ion-color-primary);
   --ion-toolbar-color: var(--ion-color-primary-contrast);

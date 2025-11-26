@@ -13,7 +13,7 @@
   }
 }
 
-/* ELIMINAR LÍNEAS NEGRAS ENTRE FAVORITOS */
+
 ion-item {
   --border-color: transparent !important;
   --inner-border-width: 0 !important;
@@ -26,12 +26,12 @@ ion-item {
   box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
 }
 
-/* Eliminar separadores de la lista */
+
 ion-list {
   background: transparent;
 }
 
-/* Textos con colores de la paleta */
+
 ion-label h2 {
   color: var(--ion-color-primary);
   font-weight: 600;

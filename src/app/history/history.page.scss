@@ -1,4 +1,4 @@
-/* ELIMINAR LÍNEAS NEGRAS EN HISTORIAL */
+
 ion-item {
   --border-color: transparent !important;
   --inner-border-width: 0 !important;
@@ -11,12 +11,12 @@ ion-item {
   box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
 }
 
-/* Eliminar separadores de la lista */
+
 ion-list {
   background: transparent;
 }
 
-/* Textos con colores de la paleta */
+
 ion-label h2 {
   color: var(--ion-color-primary);
   font-weight: 600;
@@ -26,18 +26,18 @@ ion-label p {
   color: var(--ion-color-secondary);
 }
 
-/* Estilo para el badge de número */
+
 ion-badge {
   --background: var(--ion-color-secondary);
   --color: var(--ion-color-secondary-contrast);
 }
 
-/* Icono de búsqueda */
+
 ion-icon[name="search"] {
   color: var(--ion-color-primary);
 }
 
-/* Loading y estados vacíos */
+
 .loading-container {
   text-align: center;
   padding: 40px;

@@ -1,4 +1,4 @@
-// home.page.scss - VERSIÓN MEJORADA CON PALETA CELESTE
+//  PALETA CELESTE
 
 #container {
   text-align: center;
@@ -12,13 +12,13 @@
 #container strong {
   font-size: 20px;
   line-height: 26px;
-  color: var(--ion-color-primary); // Azul eléctrico en lugar de negro
+  color: var(--ion-color-primary); 
 }
 
 #container p {
   font-size: 16px;
   line-height: 22px;
-  color: var(--ion-color-secondary); // Celeste en lugar de gris
+  color: var(--ion-color-secondary); 
   margin: 0;
 }
 
@@ -27,7 +27,7 @@
   color: var(--ion-color-primary);
 }
 
-/* Estilos específicos para la página de clima */
+
 .search-container {
   padding: 20px;
 }
@@ -83,7 +83,7 @@
   color: white;
 }
 
-/* Input y botón de búsqueda */
+
 .search-input {
   --background: #ffffff;
   --color: var(--ion-color-primary);
@@ -102,7 +102,7 @@
   font-weight: bold;
 }
 
-/* Tabs y navegación */
+
 .tabs-container {
   background: var(--ion-color-primary);
   border-radius: 0 0 20px 20px;
@@ -115,20 +115,20 @@
   font-weight: bold;
 }
 
-/* Textos que antes eran negros - ahora con colores de la paleta */
+
 .dark-text {
-  color: var(--ion-color-primary) !important; // Azul eléctrico en lugar de negro
+  color: var(--ion-color-primary) !important; 
 }
 
 .medium-text {
-  color: var(--ion-color-secondary) !important; // Celeste en lugar de gris oscuro
+  color: var(--ion-color-secondary) !important; 
 }
 
 .light-text {
-  color: var(--ion-color-tertiary) !important; // Celeste suave en lugar de gris
+  color: var(--ion-color-tertiary) !important; 
 }
 
-/* Estados de hover y activos */
+
 ion-item:hover {
   --background: rgba(79, 195, 247, 0.1);
 }
@@ -152,7 +152,7 @@ ion-button:hover {
   }
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .weather-details {
     flex-direction: column;
@@ -164,10 +164,10 @@ ion-button:hover {
   }
 }
 
-/* ESTO ARREGLA EL TEXTO "Ingresa una ciudad" EN NEGRO */
+
 ion-input {
-  --color: var(--ion-color-primary) !important; /* Texto azul cuando escribes */
-  --placeholder-color: var(--ion-color-secondary) !important; /* Placeholder celeste */
+  --color: var(--ion-color-primary) !important; 
+  --placeholder-color: var(--ion-color-secondary) !important; 
   --placeholder-opacity: 0.8;
   --background: #ffffff;
   --border-radius: 12px;
@@ -175,13 +175,13 @@ ion-input {
   --padding-end: 16px;
 }
 
-/* Para asegurar que el placeholder se vea celeste */
+
 ion-input::part(placeholder) {
   color: var(--ion-color-secondary) !important;
   opacity: 0.8;
 }
 
-/* El texto que ya está escrito */
+
 ion-input::part(text) {
   color: var(--ion-color-primary) !important;
 }
