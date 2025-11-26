@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,11 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
   standalone: false
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
+  username: string = '';
+  password: string = '';
+  errorMessage: string = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
+  login() {
+    if (this.username === 'admin' && this.password === '123456') {
+     
+      this.errorMessage = '';
+      this.router.navigate(['/home']);
+    } else {
+      
+      this.errorMessage = 'Usuario o contraseña incorrectos';
+    }
   }
 
+  
+  clearError() {
+    this.errorMessage = '';
+  }
 }
