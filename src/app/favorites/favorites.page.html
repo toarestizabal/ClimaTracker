@@ -1,13 +1,82 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>favorites</ion-title>
+    <ion-title>Mis Favoritos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="refreshAllFavorites()">
+        <ion-icon name="refresh" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">favorites</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="ion-padding">
+    
+    
+    <div *ngIf="loading" class="loading-container">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Cargando favoritos...</p>
+    </div>
+
+    
+    <div *ngIf="!loading">
+      
+      
+      <ion-card *ngIf="favorites.length === 0">
+        <ion-card-content class="text-center">
+          <ion-icon name="star-outline" size="large"></ion-icon>
+          <h3>No tienes ciudades favoritas</h3>
+          <p>Agrega ciudades desde la página de inicio</p>
+        </ion-card-content>
+      </ion-card>
+
+      
+      <ion-list *ngIf="favorites.length > 0">
+        <ion-item-sliding *ngFor="let favorite of favorites" class="slide-in">
+          
+          <ion-item>
+            <ion-label>
+              <h2>{{ favorite.city_name }}</h2>
+              <p>{{ favorite.country }} • Agregado: {{ favorite.date_added | date:'medium' }}</p>
+              
+              
+              <div *ngIf="favorite.currentWeather" class="weather-info">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="auto">
+                      <img [src]="'https://openweathermap.org/img/wn/' + favorite.currentWeather.weather[0].icon + '.png'" 
+                           alt="Weather icon">
+                    </ion-col>
+                    <ion-col>
+                      <strong>{{ favorite.currentWeather.main.temp }}°C</strong>
+                      <br>
+                      <small>{{ favorite.currentWeather.weather[0].description }}</small>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </div>
+            </ion-label>
+            
+            <ion-button 
+              fill="clear" 
+              slot="end"
+              (click)="getWeatherForFavorite(favorite.city_name)">
+              <ion-icon name="cloud-download" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-item>
+
+          
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="removeFavorite(favorite)">
+              <ion-icon name="trash" slot="icon-only"></ion-icon>
+              Eliminar
+            </ion-item-option>
+          </ion-item-options>
+
+        </ion-item-sliding>
+      </ion-list>
+
+    </div>
+
+  </div>
 </ion-content>

@@ -31,7 +31,7 @@
     </ion-card>
 
     
-    <ion-card *ngIf="weatherData">
+    <ion-card *ngIf="weatherData" class="fade-in">
       <ion-card-header>
         <ion-card-title>{{ weatherData.name }}, {{ weatherData.sys.country }}</ion-card-title>
         <ion-card-subtitle>

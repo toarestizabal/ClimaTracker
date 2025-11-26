@@ -1,2 +1,64 @@
 // For information on how to create your own theme, please refer to:
 // https://ionicframework.com/docs/theming/
+
+// Ionic Variables and Theming
+// --------------------------------------------------
+// For more information on theming, please see:
+// https://ionicframework.com/docs/theming/
+
+/** Ionic CSS Variables **/
+:root {
+  /** primary **/
+  --ion-color-primary: #1e88e5;
+  --ion-color-primary-rgb: 30, 136, 229;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #1a78c9;
+  --ion-color-primary-tint: #3594e8;
+
+  /** secondary **/
+  --ion-color-secondary: #4fc3f7;
+  --ion-color-secondary-rgb: 79, 195, 247;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #46acc9;
+  --ion-color-secondary-tint: #61c9f8;
+
+  /** tertiary **/
+  --ion-color-tertiary: #bbdefb;
+  --ion-color-tertiary-rgb: 187, 222, 251;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #a5c3dd;
+  --ion-color-tertiary-tint: #c2e1fb;
+
+  /** success **/
+  --ion-color-success: #4caf50;
+  --ion-color-success-rgb: 76, 175, 80;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #439a46;
+  --ion-color-success-tint: #5eb762;
+
+  /** warning **/
+  --ion-color-warning: #ff9800;
+  --ion-color-warning-rgb: 255, 152, 0;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #e08600;
+  --ion-color-warning-tint: #ffa21a;
+
+  /** danger **/
+  --ion-color-danger: #f44336;
+  --ion-color-danger-rgb: 244, 67, 54;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d73b30;
+  --ion-color-danger-tint: #f5564a;
+
+  /** background **/
+  --ion-background-color: #fafafa;
+  --ion-background-color-rgb: 250, 250, 250;
+
+  // ... el resto de la plantilla que ya tienes
+}
