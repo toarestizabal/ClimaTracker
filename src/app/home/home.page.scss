@@ -1,6 +1,7 @@
+// home.page.scss - VERSIÓN MEJORADA CON PALETA CELESTE
+
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
@@ -11,19 +12,129 @@
 #container strong {
   font-size: 20px;
   line-height: 26px;
+  color: var(--ion-color-primary); // Azul eléctrico en lugar de negro
 }
 
 #container p {
   font-size: 16px;
   line-height: 22px;
-
-  color: #8c8c8c;
-
+  color: var(--ion-color-secondary); // Celeste en lugar de gris
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
+  color: var(--ion-color-primary);
+}
+
+/* Estilos específicos para la página de clima */
+.search-container {
+  padding: 20px;
+}
+
+.weather-card {
+  background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 16px;
+  color: white;
+  box-shadow: 0 8px 24px rgba(33, 150, 243, 0.3);
+}
+
+.city-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.temperature {
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  margin: 16px 0;
+}
+
+.weather-description {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 16px;
+}
+
+.weather-details {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.detail-item {
+  text-align: center;
+}
+
+.detail-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 4px;
+}
+
+.detail-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Input y botón de búsqueda */
+.search-input {
+  --background: #ffffff;
+  --color: var(--ion-color-primary);
+  --border-radius: 12px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  margin-bottom: 16px;
+}
+
+.search-button {
+  --background: var(--ion-color-primary);
+  --background-activated: var(--ion-color-primary-shade);
+  --background-hover: var(--ion-color-primary-tint);
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+  font-weight: bold;
+}
+
+/* Tabs y navegación */
+.tabs-container {
+  background: var(--ion-color-primary);
+  border-radius: 0 0 20px 20px;
+  padding: 8px 16px;
+}
+
+.tab-button {
+  --color: white;
+  --color-selected: var(--ion-color-secondary);
+  font-weight: bold;
+}
+
+/* Textos que antes eran negros - ahora con colores de la paleta */
+.dark-text {
+  color: var(--ion-color-primary) !important; // Azul eléctrico en lugar de negro
+}
+
+.medium-text {
+  color: var(--ion-color-secondary) !important; // Celeste en lugar de gris oscuro
+}
+
+.light-text {
+  color: var(--ion-color-tertiary) !important; // Celeste suave en lugar de gris
+}
+
+/* Estados de hover y activos */
+ion-item:hover {
+  --background: rgba(79, 195, 247, 0.1);
+}
+
+ion-button:hover {
+  --background: var(--ion-color-primary-shade);
 }
 
 .fade-in {
@@ -40,3 +151,38 @@
     transform: translateY(0);
   }
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .weather-details {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .temperature {
+    font-size: 36px;
+  }
+}
+
+/* ESTO ARREGLA EL TEXTO "Ingresa una ciudad" EN NEGRO */
+ion-input {
+  --color: var(--ion-color-primary) !important; /* Texto azul cuando escribes */
+  --placeholder-color: var(--ion-color-secondary) !important; /* Placeholder celeste */
+  --placeholder-opacity: 0.8;
+  --background: #ffffff;
+  --border-radius: 12px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+}
+
+/* Para asegurar que el placeholder se vea celeste */
+ion-input::part(placeholder) {
+  color: var(--ion-color-secondary) !important;
+  opacity: 0.8;
+}
+
+/* El texto que ya está escrito */
+ion-input::part(text) {
+  color: var(--ion-color-primary) !important;
+}
+

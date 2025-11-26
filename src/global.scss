@@ -35,3 +35,219 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+/* ----------------------------------------------------- */
+/* PALETA DE COLORES CELESTE PARA WEATHER APP - ANDROID  */
+/* ----------------------------------------------------- */
+
+:root {
+  /* Colores principales para la app de clima */
+  --ion-color-primary: #2196F3;      /* Azul eléctrico */
+  --ion-color-primary-rgb: 33, 150, 243;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #1e88e5;
+  --ion-color-primary-tint: #42A5F5;
+
+  --ion-color-secondary: #4FC3F7;    /* Celeste brillante */
+  --ion-color-secondary-rgb: 79, 195, 247;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #46b0de;
+  --ion-color-secondary-tint: #81D4FA;
+
+  --ion-color-tertiary: #81D4FA;     /* Celeste suave */
+  --ion-color-tertiary-rgb: 129, 212, 250;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #72bbdc;
+  --ion-color-tertiary-tint: #8ed8fb;
+
+  --ion-color-success: #2dd36f;
+  --ion-color-success-rgb: 45, 211, 111;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 0, 0, 0;
+  --ion-color-success-shade: #28ba62;
+  --ion-color-success-tint: #42d77d;
+
+  --ion-color-warning: #ffc409;
+  --ion-color-warning-rgb: 255, 196, 9;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #e0ac08;
+  --ion-color-warning-tint: #ffca22;
+
+  --ion-color-danger: #eb445a;
+  --ion-color-danger-rgb: 235, 68, 90;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #cf3c4f;
+  --ion-color-danger-tint: #ed576b;
+
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 36, 40;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  --ion-color-medium: #92949c;
+  --ion-color-medium-rgb: 146, 148, 156;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 0, 0, 0;
+  --ion-color-medium-shade: #808289;
+  --ion-color-medium-tint: #9d9fa6;
+
+  --ion-color-light: #E1F5FE;        /* Fondo celeste muy claro */
+  --ion-color-light-rgb: 225, 245, 254;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #c6d8e1;
+  --ion-color-light-tint: #e4f6fe;
+}
+
+/* ----------------------------------------------------- */
+/* ESTILOS GLOBALES PARA WEATHER APP - ANDROID */
+/* ----------------------------------------------------- */
+
+/* Fondo general de la aplicación */
+ion-content {
+  --background: var(--ion-color-light);
+}
+
+/* Toolbars y headers */
+ion-toolbar {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+}
+
+/* Botones principales */
+ion-button {
+  --color: white !important;
+  --background: var(--ion-color-primary);
+  --background-activated: var(--ion-color-primary-shade);
+  --background-hover: var(--ion-color-primary-tint);
+  --border-radius: 8px;
+  --box-shadow: 0 2px 6px rgba(33, 150, 243, 0.3);
+}
+
+/* Botones en el header */
+ion-buttons ion-button {
+  --color: white !important;
+  --background: transparent;
+  --background-hover: rgba(255, 255, 255, 0.1);
+  --box-shadow: none;
+}
+
+/* Botón de éxito */
+ion-button[color="success"] {
+  --background: var(--ion-color-success);
+  --background-activated: var(--ion-color-success-shade);
+  --background-hover: var(--ion-color-success-tint);
+}
+
+/* Tarjetas con efecto elevado */
+ion-card {
+  --background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+  margin: 16px;
+}
+
+/* MARCOS CELESTES PARA INPUTS */
+ion-item {
+  --border-color: var(--ion-color-secondary) !important;
+  --border-width: 1px !important;
+  --border-style: solid !important;
+  --border-radius: 12px !important;
+  --background: #ffffff;
+}
+
+ion-input, ion-textarea, ion-select {
+  --border-color: var(--ion-color-secondary) !important;
+  --border-width: 1px !important;
+  --border-style: solid !important;
+  --border-radius: 12px !important;
+  --highlight-color-focused: var(--ion-color-primary) !important;
+  --background: #ffffff;
+
+  --placeholder-color: var(--ion-color-secondary);
+  --placeholder-opacity: 0.8;
+}
+
+/* Cuando el input está enfocado */
+ion-item.item-has-focus {
+  --border-color: var(--ion-color-primary) !important;
+  --border-width: 2px !important;
+}
+
+/* Items de listas */
+ion-item {
+  --border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* Badges y etiquetas */
+ion-badge {
+  --background: var(--ion-color-secondary);
+  --color: var(--ion-color-secondary-contrast);
+}
+
+/* Tabs bar */
+ion-tab-bar {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+  --color-selected: var(--ion-color-secondary);
+}
+
+/* Loading y spinners */
+ion-loading {
+  --background: rgba(33, 150, 243, 0.1);
+  --spinner-color: var(--ion-color-primary);
+}
+
+/* Alertas y modals */
+ion-alert {
+  --background: #ffffff;
+  --button-color: var(--ion-color-primary);
+}
+
+/* Grid system para layouts responsivos */
+ion-grid {
+  --ion-grid-padding: 16px;
+}
+
+/* Clases de utilidad personalizadas */
+.weather-background {
+  background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+}
+
+.text-primary {
+  color: var(--ion-color-primary);
+}
+
+.text-secondary {
+  color: var(--ion-color-secondary);
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, #2196F3 0%, #4FC3F7 50%, #81D4FA 100%);
+}
+
+/* Sombras personalizadas */
+.shadow-soft {
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
+}
+
+.shadow-medium {
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+}
+
+.shadow-strong {
+  box-shadow: 0 8px 24px rgba(33, 150, 243, 0.2);
+}
+
+/* TEXTO NEGRO CUANDO ESCRIBES */
+ion-input, ion-textarea, ion-select {
+  --color: #000000 !important;
+}

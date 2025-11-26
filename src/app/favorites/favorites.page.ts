@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/database';
 import { WeatherService } from '../services/weather';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-favorites',
@@ -14,11 +15,19 @@ export class FavoritesPage implements OnInit {
 
   constructor(
     private databaseService: DatabaseService,
-    private weatherService: WeatherService
+    private weatherService: WeatherService,
+    private platform: Platform
   ) { }
 
   ngOnInit() {
     this.loadFavorites();
+  }
+
+  ionViewDidEnter() {
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      // Navega al home al presionar back de Android
+      window.history.back();
+    });
   }
 
   loadFavorites() {
@@ -32,11 +41,9 @@ export class FavoritesPage implements OnInit {
     });
   }
 
-  
   getWeatherForFavorite(city: string) {
     this.weatherService.getCurrentWeather(city).subscribe({
       next: (data) => {
-        
         const favoriteIndex = this.favorites.findIndex(fav => fav.city_name === city);
         if (favoriteIndex !== -1) {
           this.favorites[favoriteIndex].currentWeather = data;
@@ -48,20 +55,15 @@ export class FavoritesPage implements OnInit {
     });
   }
 
-  
   removeFavorite(favorite: any) {
-    
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     const updatedFavorites = favorites.filter((fav: any) => 
       !(fav.city_name === favorite.city_name && fav.country === favorite.country)
     );
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-    
-    
     this.loadFavorites();
   }
 
-  
   refreshAllFavorites() {
     this.favorites.forEach(favorite => {
       this.getWeatherForFavorite(favorite.city_name);

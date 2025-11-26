@@ -1,8 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      WeatherApp Pro
-    </ion-title>
+    <ion-title>WeatherApp Pro</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/favorites"> Favoritos</ion-button>
+      <ion-button routerLink="/history">Historial</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -24,6 +26,7 @@
         <ion-button 
           expand="block" 
           (click)="searchWeather()"
+          color="primary"
           style="margin-top: 15px;">
           Buscar Clima
         </ion-button>
