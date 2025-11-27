@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-// Interfaces para tipado
+
 export interface WeatherResponse {
   name: string;
   sys: {

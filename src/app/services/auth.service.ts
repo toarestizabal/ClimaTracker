@@ -9,7 +9,7 @@ export class AuthService {
   private currentUser = new BehaviorSubject<string>('');
 
   constructor() {
-    // Verificar si ya está logueado al iniciar la app
+   
     const savedUser = localStorage.getItem('weatherAppUser');
     if (savedUser) {
       this.isAuthenticated.next(true);
