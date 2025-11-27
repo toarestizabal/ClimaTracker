@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { WeatherService } from '../services/weather';
 import { DatabaseService } from '../services/database';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -11,10 +13,13 @@ import { DatabaseService } from '../services/database';
 export class HomePage {
   city: string = '';
   weatherData: any;
+  loadingLocation: boolean = false;
 
   constructor(
     private weatherService: WeatherService,
-    private databaseService: DatabaseService
+    private databaseService: DatabaseService,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   searchWeather() {
@@ -36,6 +41,52 @@ export class HomePage {
         }
       });
     }
+  }
+
+  
+  getCurrentLocationWeather() {
+    this.loadingLocation = true;
+    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          console.log('Coordenadas:', lat, lon);
+
+          this.weatherService.getWeatherByCoords(lat, lon).subscribe({
+            next: (data: any) => {
+              this.weatherData = data;
+              this.city = data.name;
+              this.loadingLocation = false;
+              
+              this.databaseService.insertSearchHistory(data.name).then(() => {
+                console.log('Búsqueda por ubicación guardada');
+              });
+            },
+            error: (error: any) => {
+              console.error('Error clima por ubicación:', error);
+              this.loadingLocation = false;
+              alert('Error obteniendo clima de ubicación actual');
+            }
+          });
+        },
+        (error) => {
+          console.error('Error geolocalización:', error);
+          this.loadingLocation = false;
+          alert('No se pudo obtener la ubicación actual: ' + error.message);
+        }
+      );
+    } else {
+      this.loadingLocation = false;
+      alert('Geolocalización no soportada en este navegador');
+    }
+  }
+
+  
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   addToFavorites() {
