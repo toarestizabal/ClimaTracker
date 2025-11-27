@@ -25,7 +25,7 @@ export class FavoritesPage implements OnInit {
 
   ionViewDidEnter() {
     this.platform.backButton.subscribeWithPriority(10, () => {
-      // Navega al home al presionar back de Android
+      
       window.history.back();
     });
   }

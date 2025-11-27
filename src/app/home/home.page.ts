@@ -20,18 +20,17 @@ export class HomePage {
   searchWeather() {
     if (this.city.trim() !== '') {
       this.weatherService.getCurrentWeather(this.city).subscribe({
-        next: (data) => {
+        next: (data: any) => {
           this.weatherData = data;
           console.log('Datos del clima:', data);
           
-          
           this.databaseService.insertSearchHistory(this.city).then(() => {
             console.log('Búsqueda guardada en historial');
-          }).catch(error => {
+          }).catch((error: any) => {
             console.error('Error guardando en historial:', error);
           });
         },
-        error: (error) => {
+        error: (error: any) => {
           console.error('Error fetching weather:', error);
           this.weatherData = null;
         }
@@ -47,7 +46,7 @@ export class HomePage {
       ).then(() => {
         console.log('Ciudad agregada a favoritos');
         alert('¡Agregada a favoritos!');
-      }).catch(error => {
+      }).catch((error: any) => {
         console.error('Error agregando a favoritos:', error);
       });
     }

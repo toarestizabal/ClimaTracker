@@ -36,12 +36,9 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
-/* ----------------------------------------------------- */
-/* PALETA DE COLORES CELESTE PARA WEATHER APP - ANDROID  */
-/* ----------------------------------------------------- */
 
 :root {
-  /* Colores principales para la app de clima */
+  
   --ion-color-primary: #2196F3;      
   --ion-color-primary-rgb: 33, 150, 243;
   --ion-color-primary-contrast: #ffffff;
@@ -106,11 +103,7 @@
   --ion-color-light-tint: #e4f6fe;
 }
 
-/* ----------------------------------------------------- */
-/* ESTILOS GLOBALES PARA WEATHER APP - ANDROID */
-/* ----------------------------------------------------- */
 
-/* Fondo general de la aplicación */
 ion-content {
   --background: var(--ion-color-light);
 }

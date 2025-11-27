@@ -62,7 +62,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.ts"
+                }
+              ]
             },
             "ci": {
               "progress": false
@@ -79,9 +85,7 @@
             "development": {
               "buildTarget": "app:build:development"
             },
-            "ci": {
-              "progress": false
-            }
+            "ci": { }
           },
           "defaultConfiguration": "development"
         },
@@ -116,7 +120,7 @@
           },
           "configurations": {
             "ci": {
-              "progress": false,
+              
               "watch": false
             }
           }
