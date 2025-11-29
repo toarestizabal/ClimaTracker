@@ -12,22 +12,36 @@ export class LoginPage {
   username: string = '';
   password: string = '';
   errorMessage: string = '';
+  isLoading: boolean = false; 
 
   constructor(
     private authService: AuthService,
     private router: Router
   ) {}
 
-  login() {
+  
+  async login() {
     if (this.username.trim() === '' || this.password.trim() === '') {
       this.errorMessage = 'Por favor ingrese usuario y contraseña';
       return;
     }
 
-    if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/home']);
-    } else {
-      this.errorMessage = 'Usuario o contraseña incorrectos';
+    this.isLoading = true; 
+    this.errorMessage = ''; 
+
+    try {
+      
+      const result = await this.authService.login(this.username, this.password);
+      
+      if (result.success) {
+        this.router.navigate(['/home']);
+      } else {
+        this.errorMessage = result.message || 'Usuario o contraseña incorrectos';
+      }
+    } catch (error) {
+      this.errorMessage = 'Error en la autenticación';
+    } finally {
+      this.isLoading = false; 
     }
   }
 

@@ -20,7 +20,8 @@
             type="text" 
             [(ngModel)]="username" 
             placeholder="Ingresa tu usuario"
-            (ionInput)="clearError()">
+            (ionInput)="clearError()"
+            [disabled]="isLoading">
           </ion-input>
         </ion-item>
 
@@ -31,7 +32,8 @@
             [(ngModel)]="password" 
             placeholder="Ingresa tu contraseña"
             (ionInput)="clearError()"
-            (keyup.enter)="login()">
+            (keyup.enter)="login()"
+            [disabled]="isLoading">
           </ion-input>
         </ion-item>
 
@@ -44,8 +46,14 @@
         <ion-button 
           expand="block" 
           (click)="login()"
+          [disabled]="isLoading"
           style="margin-top: 20px;">
-          Iniciar Sesión
+          
+          <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+          <span *ngIf="!isLoading">Iniciar Sesión</span>
+          <span *ngIf="isLoading">Validando...</span>
         </ion-button>
-
-   
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

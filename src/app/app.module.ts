@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './auth.guard';
+import { DatabaseService } from './services/database';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,8 @@ import { AuthGuard } from './auth.guard';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    AuthGuard
+    AuthGuard,
+    DatabaseService
   ],
   bootstrap: [AppComponent]
 })

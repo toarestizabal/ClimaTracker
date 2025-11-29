@@ -1,44 +1,57 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { DatabaseService } from './database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private isAuthenticated = new BehaviorSubject<boolean>(false);
-  private currentUser = new BehaviorSubject<string>('');
+  private currentUser = new BehaviorSubject<any>(null);
 
-  constructor() {
-   
+  constructor(private databaseService: DatabaseService) {
+    this.checkExistingAuth();
+  }
+
+  private checkExistingAuth() {
+    
     const savedUser = localStorage.getItem('weatherAppUser');
     if (savedUser) {
-      this.isAuthenticated.next(true);
-      this.currentUser.next(savedUser);
+      try {
+        const userData = JSON.parse(savedUser);
+        this.isAuthenticated.next(true);
+        this.currentUser.next(userData);
+      } catch (error) {
+        
+        localStorage.removeItem('weatherAppUser');
+      }
     }
   }
 
-  login(username: string, password: string): boolean {
-    
-    const validUsers = [
-      { user: 'admin', pass: 'Tomas.1998' },
-      { user: 'usuario', pass: 'clima2025' },
-      { user: 'test', pass: 'test' }
-    ];
-
-    const isValid = validUsers.some(u => u.user === username && u.pass === password);
-    
-    if (isValid) {
-      this.isAuthenticated.next(true);
-      this.currentUser.next(username);
-      localStorage.setItem('weatherAppUser', username);
-      return true;
+  async login(username: string, password: string): Promise<{success: boolean, message?: string}> {
+    try {
+      
+      const result = await this.databaseService.validateUser(username, password);
+      
+      if (result.success && result.user) {
+        this.isAuthenticated.next(true);
+        this.currentUser.next(result.user);
+        
+        
+        localStorage.setItem('weatherAppUser', JSON.stringify(result.user));
+        return { success: true };
+      } else {
+        return { success: false, message: 'Usuario o contraseña incorrectos' };
+      }
+      
+    } catch (error) {
+      return { success: false, message: 'Error en la autenticación' };
     }
-    return false;
   }
 
   logout() {
     this.isAuthenticated.next(false);
-    this.currentUser.next('');
+    this.currentUser.next(null);
     localStorage.removeItem('weatherAppUser');
   }
 
@@ -50,8 +63,12 @@ export class AuthService {
     return this.currentUser.asObservable();
   }
 
-  
   isAuthenticatedSync(): boolean {
     return this.isAuthenticated.value;
+  }
+
+  
+  getCurrentUserSync(): any {
+    return this.currentUser.value;
   }
 }

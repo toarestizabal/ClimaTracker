@@ -10,16 +10,53 @@ export class DatabaseService {
   }
 
   private initDatabase() {
-    // Inicializar datos si no existen
+    
     if (!localStorage.getItem('favorites')) {
       localStorage.setItem('favorites', JSON.stringify([]));
     }
     if (!localStorage.getItem('search_history')) {
       localStorage.setItem('search_history', JSON.stringify([]));
     }
+    
+   
+    if (!localStorage.getItem('weather_users')) {
+      const defaultUsers = [
+        { id: 1, username: 'admin', password: 'Tomas.1998', email: 'admin@climatracker.com', created_at: new Date().toISOString() },
+        { id: 2, username: 'usuario', password: 'clima2025', email: 'usuario@climatracker.com', created_at: new Date().toISOString() },
+        { id: 3, username: 'test', password: 'test', email: 'test@climatracker.com', created_at: new Date().toISOString() }
+      ];
+      localStorage.setItem('weather_users', JSON.stringify(defaultUsers));
+    }
+   
   }
 
-  // INSERTAR EN HISTORIAL
+  
+  validateUser(username: string, password: string): Promise<{success: boolean, user?: any}> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const users = JSON.parse(localStorage.getItem('weather_users') || '[]');
+        const user = users.find((u: any) => u.username === username && u.password === password);
+        
+        if (user) {
+          resolve({ success: true, user: { id: user.id, username: user.username, email: user.email } });
+        } else {
+          resolve({ success: false });
+        }
+      }, 100); 
+    });
+  }
+
+ 
+  getUserById(userId: number): Promise<any> {
+    return new Promise((resolve) => {
+      const users = JSON.parse(localStorage.getItem('weather_users') || '[]');
+      const user = users.find((u: any) => u.id === userId);
+      resolve(user ? { id: user.id, username: user.username, email: user.email } : null);
+    });
+  }
+ 
+
+  
   insertSearchHistory(city: string): Promise<any> {
     return new Promise((resolve) => {
       const history = JSON.parse(localStorage.getItem('search_history') || '[]');
@@ -27,14 +64,13 @@ export class DatabaseService {
         city_name: city,
         search_date: new Date().toISOString()
       });
-      // Mantener solo últimos 10
+      
       const limitedHistory = history.slice(0, 10);
       localStorage.setItem('search_history', JSON.stringify(limitedHistory));
       resolve(true);
     });
   }
 
-  // OBTENER HISTORIAL
   getSearchHistory(): Promise<any[]> {
     return new Promise((resolve) => {
       const history = JSON.parse(localStorage.getItem('search_history') || '[]');
@@ -42,7 +78,6 @@ export class DatabaseService {
     });
   }
 
-  // INSERTAR FAVORITO
   insertFavorite(city: string, country: string): Promise<any> {
     return new Promise((resolve) => {
       const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -56,7 +91,6 @@ export class DatabaseService {
     });
   }
 
-  // OBTENER FAVORITOS
   getFavorites(): Promise<any[]> {
     return new Promise((resolve) => {
       const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
