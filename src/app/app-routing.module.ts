@@ -33,9 +33,17 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'error404',
+    loadChildren: () => import('./error404/error404.module').then( m => m.Error404PageModule)
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'error404'
   }
 ];
 

@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Error de Conexión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="error-container">
+    <ion-icon name="cloud-offline" size="large"></ion-icon>
+    <h2>Sin conexión a internet</h2>
+    <p>No se puede acceder a los datos del clima</p>
+    <ion-button (click)="retry()" expand="block">
+      Reintentar
+    </ion-button>
+  </div>
+</ion-content>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
+import { Router } from '@angular/router'; 
 
 export interface WeatherResponse {
   name: string;
@@ -33,9 +33,18 @@ export class WeatherService {
   private apiKey = '819ebacc6892e71c3a2e84247c61cf55';
   private baseUrl = 'https://api.openweathermap.org/data/2.5';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router 
+  ) { }
 
   getCurrentWeather(city: string): Observable<WeatherResponse> {
+    
+    if (!navigator.onLine) {
+      this.router.navigate(['/error404']);
+      return throwError(() => new Error('Sin conexión a internet'));
+    }
+
     const encodedCity = encodeURIComponent(city.trim());
     const url = `${this.baseUrl}/weather?q=${encodedCity}&units=metric&appid=${this.apiKey}`;
     
@@ -46,8 +55,14 @@ export class WeatherService {
     );
   }
 
-  // MÉTODO GEOLOCALIZACIÓN
+  
   getWeatherByCoords(lat: number, lon: number): Observable<WeatherResponse> {
+    
+    if (!navigator.onLine) {
+      this.router.navigate(['/error404']);
+      return throwError(() => new Error('Sin conexión a internet'));
+    }
+
     const url = `${this.baseUrl}/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;
     
     return this.http.get<WeatherResponse>(url).pipe(
