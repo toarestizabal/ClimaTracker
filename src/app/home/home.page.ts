@@ -29,8 +29,9 @@ export class HomePage {
           this.weatherData = data;
           console.log('Datos del clima:', data);
           
-          this.databaseService.insertSearchHistory(this.city).then(() => {
-            console.log('Búsqueda guardada en historial');
+         
+          this.databaseService.insertSearchHistory(this.city, data).then(() => {
+            console.log('Búsqueda guardada en historial CON DATOS DEL CLIMA');
           }).catch((error: any) => {
             console.error('Error guardando en historial:', error);
           });
@@ -60,8 +61,9 @@ export class HomePage {
               this.city = data.name;
               this.loadingLocation = false;
               
-              this.databaseService.insertSearchHistory(data.name).then(() => {
-                console.log('Búsqueda por ubicación guardada');
+              
+              this.databaseService.insertSearchHistory(data.name, data).then(() => {
+                console.log('Búsqueda por ubicación guardada CON DATOS DEL CLIMA');
               });
             },
             error: (error: any) => {

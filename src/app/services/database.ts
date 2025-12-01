@@ -57,19 +57,35 @@ export class DatabaseService {
  
 
   
-  insertSearchHistory(city: string): Promise<any> {
-    return new Promise((resolve) => {
-      const history = JSON.parse(localStorage.getItem('search_history') || '[]');
-      history.unshift({
-        city_name: city,
-        search_date: new Date().toISOString()
-      });
-      
-      const limitedHistory = history.slice(0, 10);
-      localStorage.setItem('search_history', JSON.stringify(limitedHistory));
-      resolve(true);
-    });
-  }
+ insertSearchHistory(city: string, weatherData?: any): Promise<any> {
+  return new Promise((resolve) => {
+    const history = JSON.parse(localStorage.getItem('search_history') || '[]');
+    
+    const historyEntry: any = {
+      city_name: city,
+      search_date: new Date().toISOString()
+    };
+    
+   
+    if (weatherData) {
+      historyEntry.weather_data = {
+        temp: weatherData.main.temp,
+        feels_like: weatherData.main.feels_like,
+        humidity: weatherData.main.humidity,
+        pressure: weatherData.main.pressure,
+        wind_speed: weatherData.wind.speed,
+        description: weatherData.weather[0].description,
+        icon: weatherData.weather[0].icon
+      };
+    }
+    
+    history.unshift(historyEntry);
+    
+    const limitedHistory = history.slice(0, 10);
+    localStorage.setItem('search_history', JSON.stringify(limitedHistory));
+    resolve(true);
+  });
+}
 
   getSearchHistory(): Promise<any[]> {
     return new Promise((resolve) => {
