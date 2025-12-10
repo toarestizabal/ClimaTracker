@@ -37,6 +37,10 @@ const routes: Routes = [
     loadChildren: () => import('./error404/error404.module').then( m => m.Error404PageModule)
   },
   {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'

@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router'; 
+import { environment } from '../../environments/environment'; // AGREGAR
 
 export interface WeatherResponse {
   name: string;
@@ -39,10 +40,10 @@ export class WeatherService {
   ) { }
 
   getCurrentWeather(city: string): Observable<WeatherResponse> {
-    
-    if (!navigator.onLine) {
-      this.router.navigate(['/error404']);
-      return throwError(() => new Error('Sin conexión a internet'));
+    // SOLO verificar conexión si NO está en desarrollo
+    if (!navigator.onLine && !environment.production) {
+      console.warn('Modo desarrollo: simulación sin conexión permitida');
+      // No redirigir en desarrollo
     }
 
     const encodedCity = encodeURIComponent(city.trim());
@@ -57,10 +58,10 @@ export class WeatherService {
 
   
   getWeatherByCoords(lat: number, lon: number): Observable<WeatherResponse> {
-    
-    if (!navigator.onLine) {
-      this.router.navigate(['/error404']);
-      return throwError(() => new Error('Sin conexión a internet'));
+    // SOLO verificar conexión si NO está en desarrollo
+    if (!navigator.onLine && !environment.production) {
+      console.warn('Modo desarrollo: simulación sin conexión permitida');
+      // No redirigir en desarrollo
     }
 
     const url = `${this.baseUrl}/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`;

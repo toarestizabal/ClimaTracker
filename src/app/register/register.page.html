@@ -1,25 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>WeatherApp Pro - Login</ion-title>
+    <ion-title>WeatherApp Pro - Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div class="login-container">
+  <div class="register-container">
     <ion-card>
       <ion-card-header>
-        <ion-card-title>Iniciar Sesión</ion-card-title>
+        <ion-card-title>Crear Cuenta</ion-card-title>
         <ion-card-subtitle>WeatherApp Pro</ion-card-subtitle>
       </ion-card-header>
 
       <ion-card-content>
         
         <ion-item>
-          <ion-label position="stacked">Usuario</ion-label>
+          <ion-label position="stacked">Nombre de usuario</ion-label>
           <ion-input 
             type="text" 
             [(ngModel)]="username" 
-            placeholder="Ingresa tu usuario"
+            placeholder="Crea un nombre de usuario"
+            (ionInput)="clearError()"
+            [disabled]="isLoading">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Correo electrónico</ion-label>
+          <ion-input 
+            type="email" 
+            [(ngModel)]="email" 
+            placeholder="ejemplo@correo.com"
             (ionInput)="clearError()"
             [disabled]="isLoading">
           </ion-input>
@@ -30,9 +41,20 @@
           <ion-input 
             type="password" 
             [(ngModel)]="password" 
-            placeholder="Ingresa tu contraseña"
+            placeholder="Crea una contraseña segura"
             (ionInput)="clearError()"
-            (keyup.enter)="login()"
+            [disabled]="isLoading">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Confirmar contraseña</ion-label>
+          <ion-input 
+            type="password" 
+            [(ngModel)]="confirmPassword" 
+            placeholder="Repite tu contraseña"
+            (ionInput)="clearError()"
+            (keyup.enter)="register()"
             [disabled]="isLoading">
           </ion-input>
         </ion-item>
@@ -45,21 +67,21 @@
         
         <ion-button 
           expand="block" 
-          (click)="login()"
+          (click)="register()"
           [disabled]="isLoading"
           style="margin-top: 20px;">
           
           <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
-          <span *ngIf="!isLoading">Iniciar Sesión</span>
-          <span *ngIf="isLoading">Validando...</span>
+          <span *ngIf="!isLoading">Crear Cuenta</span>
+          <span *ngIf="isLoading">Registrando...</span>
         </ion-button>
 
         
         <div style="text-align: center; margin-top: 20px;">
           <ion-text>
-            ¿No tienes cuenta? 
-            <a routerLink="/register" style="text-decoration: none;">
-              <strong>Regístrate aquí</strong>
+            ¿Ya tienes cuenta? 
+            <a routerLink="/login" style="text-decoration: none;">
+              <strong>Inicia sesión aquí</strong>
             </a>
           </ion-text>
         </div>
