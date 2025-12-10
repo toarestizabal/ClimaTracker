@@ -1,11 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { IonicModule } from '@ionic/angular';
+import { HttpClientTestingModule } from '@angular/common/http/testing'; 
 import { FavoritesPage } from './favorites.page';
 
 describe('FavoritesPage', () => {
   let component: FavoritesPage;
   let fixture: ComponentFixture<FavoritesPage>;
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [FavoritesPage],
+      imports: [
+        IonicModule.forRoot(),
+        HttpClientTestingModule 
+      ]
+    }).compileComponents();
+
     fixture = TestBed.createComponent(FavoritesPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
