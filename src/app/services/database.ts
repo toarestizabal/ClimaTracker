@@ -15,7 +15,6 @@ export class DatabaseService {
   private async initDatabase() {
     this._storage = await this.storage.create();
 
-    // Inicializar storage si no existe
     const favorites = await this._storage.get('favorites');
     if (!favorites) {
       await this._storage.set('favorites', []);
@@ -37,7 +36,7 @@ export class DatabaseService {
     }
   }
 
-  // Validar usuario
+  
   async validateUser(username: string, password: string): Promise<{ success: boolean; user?: any }> {
     const users = (await this._storage.get('weather_users')) || [];
     const user = users.find((u: any) => u.username === username && u.password === password);
@@ -48,14 +47,14 @@ export class DatabaseService {
     return { success: false };
   }
 
-  // Obtener usuario por ID
+  
   async getUserById(userId: number): Promise<any> {
     const users = (await this._storage.get('weather_users')) || [];
     const user = users.find((u: any) => u.id === userId);
     return user ? { id: user.id, username: user.username, email: user.email } : null;
   }
 
-  // Registrar nuevo usuario
+  
   async registerUser(username: string, email: string, password: string): Promise<{ success: boolean; message?: string }> {
     const users = (await this._storage.get('weather_users')) || [];
 
@@ -83,7 +82,7 @@ export class DatabaseService {
     return { success: true };
   }
 
-  // Insertar historial de búsqueda
+  
   async insertSearchHistory(city: string, weatherData?: any): Promise<boolean> {
     const history = (await this._storage.get('search_history')) || [];
 
@@ -111,12 +110,12 @@ export class DatabaseService {
     return true;
   }
 
-  // Obtener historial de búsqueda
+  
   async getSearchHistory(): Promise<any[]> {
     return (await this._storage.get('search_history')) || [];
   }
 
-  // Insertar favorito
+  
   async insertFavorite(city: string, country: string): Promise<boolean> {
     const favorites = (await this._storage.get('favorites')) || [];
 
@@ -130,7 +129,7 @@ export class DatabaseService {
     return true;
   }
 
-  // Obtener favoritos
+  
   async getFavorites(): Promise<any[]> {
     return (await this._storage.get('favorites')) || [];
   }
